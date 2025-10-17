@@ -1,0 +1,95 @@
+  $primary: #3b82f6;
+  $secondary: #2563eb;
+  $danger: #ef4444;
+  $success: #22c55e;
+  $warning: #facc15;
+  $info: #3b82f6;
+  $light: #f3f4f6;
+  $dark: #1f2937;
+  $white: #ffffff;
+  $black: #0D1B2A;
+
+  $backgroundGreen: #22c55e55;
+  $backgroundRed: #ef444455;
+  $backgroundYellow: #facc1555;
+  $backgroundBlue: #3b82f655;
+
+@mixin themeAlert($name,$bgColor, $borderColor) {
+  .alert-#{$name} {
+    width: 500px;
+    background-color: $bgColor;
+    color: $borderColor;
+    padding: 18px 16px;
+    border-radius: 4px;
+    margin: 16px auto;
+    border: dotted 3px $borderColor;
+    border-radius: 10px;
+    line-height: 1.5;
+
+    .alert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+
+      .alert-title {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        h3 {
+          font-size: 20px;
+          color: $borderColor;
+          font-weight: 900;
+          text-transform: capitalize;
+          letter-spacing: 2px;
+        }
+
+        .iconSvg {
+          color: $borderColor;
+          width: 24px;
+          height: 24px;
+          animation: alternates 2s infinite ease-in-out;
+
+          @keyframes alternates {
+            0% {
+              transform: scale(1) rotate(0deg);
+            }
+
+            25% {
+              transform: scale(1.1) rotate(45deg);
+            }
+
+            50% {
+              transform: scale(1) rotate(0deg);
+            }
+
+            75% {
+              transform: scale(0.8) rotate(-45deg);
+            }
+
+            100% {
+              transform: scale(1) rotate(0deg);
+            }
+
+          }
+        }
+      }
+
+      .alert-close {
+        cursor: pointer;
+        transition: all .3s ease-in-out;
+
+        &:hover {
+          color: $danger;
+        }
+      }
+    }
+  }
+}
+
+
+@include themeAlert('success', $backgroundGreen, $success);
+@include themeAlert('error', $backgroundRed, $danger);
+@include themeAlert('warning', $backgroundYellow, $warning);
+@include themeAlert('info', $backgroundBlue, $info);
